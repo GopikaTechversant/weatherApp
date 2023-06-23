@@ -1,0 +1,94 @@
+
+.divWeatherMain {
+    display: block;
+    border-radius: 10px;
+    width: 200px;
+    height: 220px;
+    background: rgb(5, 5, 61);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(8, 7, 42, 1));
+    color: white;
+    font-family: 'Segoi UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 69%; */
+    gap: 20px;
+    /* justify-content: space-between; */
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+  
+  .weatherWidgetRow {
+    align-items: center;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: fit-content;
+    flex: 1 0 calc(20% - 20px); 
+  }
+  
+  .sun {
+    margin-top: 18px;
+    color: yellow;
+    filter: drop-shadow(1px 1px 10px yellow);
+    width: 100px;
+    height: auto;
+    
+  }
+  /* @media only screen and (max-width: 820px){
+    #divWeatherMain {
+        display: block;
+        border-radius: 10px;
+        width: 100px;
+        color: white;
+        font-family: 'Segoi UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+    
+      .container {
+        justify-content: center;
+        width: 60%;
+      }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    #divWeatherMain {
+      display: block;
+      border-radius: 10px;
+      
+      height: 220px;
+      background: rgb(5, 5, 61);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(8, 7, 42, 1));
+      color: white;
+      font-family: 'Segoi UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+   
+    .container {
+      justify-content: center;
+      width: 100%;
+    }
+}
+@media (max-width: 940px) {
+    .weatherWidgetRow {
+        flex: 1 0 calc(33.33% - 20px); 
+      }
+      .container {
+        justify-content: center;
+        
+      }
+}
+  
+  @media (max-width: 480px) {
+   
+    .weatherWidgetRow {
+      flex: 1 0 calc(33.33% - 20px); 
+    }
+    .container {
+      justify-content: center;
+     
+    }
+   
+  } */
+   
+  
