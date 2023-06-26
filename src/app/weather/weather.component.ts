@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {faSun} from '@fortawesome/free-solid-svg-icons'
+import { Router } from '@angular/router';
+import {faSun} from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { WeatherDataService } from '../services/weather-data.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
@@ -7,46 +12,53 @@ import {faSun} from '@fortawesome/free-solid-svg-icons'
 })
 export class WeatherComponent implements OnInit{
   containerWidth: any;
-  
-  
-  constructor(){}
+  searchWidth:any;
+  weatherData: any;
+  apiKey = environment.apiKey;
+  apiUrl = environment.apiUrl;
+ 
+  constructor(private router:Router,private http:HttpClient,private weatherService:WeatherDataService){}
   sunIcon=faSun;
+  searchIcon=faSearch;
   ngOnInit(): void {
     console.log(screen.width);
     this.updateContainerWidth();
+  this.load();
+         
   }
-  // containerWidth = (screen.width) / 4; 
-  // container = document.getElementsByClassName('container');
+ 
   private updateContainerWidth(): void {
     const screenWidth = screen.width;
-    // if(screenWidth < 1200){
-    // const cardWidth = Math.floor(screenWidth / 4); 
-    // this.containerWidth = cardWidth - 10; 
-    // }
+  
     console.log(this.containerWidth);
-  //   if(screenWidth <= 768 && screenWidth > 480){
-  //     const cardWidth = Math.floor(screenWidth / 4); 
-  //     this.containerWidth = cardWidth - 10; 
-  //   }
-  //   else if(screenWidth < 1200 && screenWidth >768){
-  //     const cardWidth = Math.floor(screenWidth / 5); 
-  //     this.containerWidth = cardWidth - 10; 
-  //   }
-  //   else if(screenWidth >1200){
-  //     const cardWidth = Math.floor(screenWidth/5); 
-  //     this.containerWidth = cardWidth - 10; 
-  //   }else if(screenWidth <= 480){
-  //     const cardWidth = Math.floor(screenWidth/3); 
-  //     this.containerWidth = cardWidth - 10; 
-  //   }
+
   if(screenWidth >= 1200){
     const cardWidth = Math.floor(screenWidth / 5);
     this.containerWidth = cardWidth - 10; 
-  }else if(screenWidth <1200 && screenWidth > 768){
-    const cardWidth = Math.floor(screenWidth / 5);
+  }else if(screenWidth <1200 && screenWidth > 768 ){
+    const cardWidth = Math.floor(screenWidth / 4);
     this.containerWidth = cardWidth - 10; 
+    this.searchWidth = Math.floor(screenWidth / 4);
   }
-
-  }
+ 
   
+  }
+  weatherDetail():void{
+    this.router.navigate(['detail']);
+  }
+  // getWeather(city: string): void {
+  //   console.log('Before API call');
+  //   this.weatherService.getWeatherByCity(city)
+  //     .subscribe((data: any) => {
+  //       console.log('Weather data:', data);
+  //     });
+  // }
+  load(){
+    console.log("qqqqqqqqqqqqqq");
+    
+    this.http.get(`${this.apiUrl}/weather?q=${"london"}&appid=${this.apiKey}`);
+    console.log("diefjieofieof");
+    
+  }
+ 
 }
