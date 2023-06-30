@@ -1,7 +1,79 @@
-
-
-<div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-<div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-<div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-<div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-<div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
+<h2>Weather Details for {{ city }}</h2>
+<div class="container">
+  <div class="currentWeather">
+    <h2>current weather</h2>
+    <p>11.30 AM</p>
+    <div class="rainSvg">
+      <svg class="weather-icon" data-src="/images/weathericons/18.svg" viewBox="0 0 288 288" width="88" height="88"><g stroke-width="9.796" fill="none" fill-rule="evenodd"><path d="M204.873 168.698c31.109 0 56.327-25.218 56.327-56.327 0-31.108-25.218-56.326-56.327-56.326h-9.649c-17.997-21.189-47.006-29.414-73.446-20.826-26.44 8.588-45.079 32.29-47.19 60.01H62.784c-20.288 0-36.735 16.446-36.735 36.734s16.447 36.735 36.735 36.735h142.09Z" stroke="#BABABA"></path><path d="m50.44 234.429 26.842-45.992M121.657 234.429l26.841-45.992M72.53 257.645l40.36-69.208M194.294 234.429l26.84-45.992M145.118 257.645l40.409-69.208" stroke="#288ADB"></path></g></svg>
+    
+    <div class="temp">26°</div>
+    <div class="detailWeather">
+      <div class="spaced-content">
+				<span class="label">RealFeel Shade™</span>
+				<span class="value">29°</span>
+			</div>
+      <div class="spaced-content detail">
+				<span class="label">Air Quality</span>
+				<span class="value" style="color: #1DCFFF">Excellent</span>
+			</div>
+      <div class="spaced-content detail">
+				<span class="label">Wind</span>
+				<span class="value">NNW 15 km/h</span>
+			</div>
+      <div class="spaced-content detail">
+				<span class="label">Wind Gusts</span>
+				<span class="value">15 km/h</span>
+			</div>
+      
+    </div>
+    
+  </div>
+  <div class="spaced-content">
+		<span class="phrase">Rain</span>
+		<span class="cur-con-weather-card__cta">
+			<span class="text">More Details</span>
+			<svg class="icon-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><defs><path id="a" d="m8.495.505 5 5v.99l-5 5-.99-.99 3.805-3.806L0 6.7V5.3l11.31-.001-3.805-3.804.99-.99z"></path></defs><use fill="#000" fill-rule="nonzero" xlink:href="#a" transform="translate(2 3)"></use></svg>
+		</span>
+	</div>
+  </div>
+  <div class="forecast">
+    <h2>TODAY’S WEATHER FORECAST</h2>
+    <div class="thunderForecast">
+      <svg class="icon-weather" data-src="/images/weathericons/15.svg" viewBox="0 0 288 288" width="62" height="62"><g stroke-width="9.796" fill="none" fill-rule="evenodd"><path stroke="#FF8700" d="m135.861 258.506 37.42-64.065h-42.514l37.42-64.163"></path><path d="M167.698 167.698h37.175c31.109 0 56.327-25.218 56.327-56.327 0-31.108-25.218-56.326-56.327-56.326h-9.649c-17.997-21.189-47.006-29.414-73.446-20.826-26.44 8.588-45.079 32.29-47.19 60.01H62.784c-20.288 0-36.735 16.446-36.735 36.734s16.447 36.735 36.735 36.735h61.714" stroke="#BABABA"></path></g></svg>
+      <div class="temp-container">
+        <div class="temp-forecast">29°<span class="after-temp">Hi</span></div>
+        <div class="real-feel">RealFeel® 36°</div>
+      </div>
+      <div class="forecast-phrase">A thunderstorm or two</div>
+      <svg class="icon-arrow-forecast-today" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><defs><path id="a" d="m8.495.505 5 5v.99l-5 5-.99-.99 3.805-3.806L0 6.7V5.3l11.31-.001-3.805-3.804.99-.99z"></path></defs><use fill="#000" fill-rule="nonzero" xlink:href="#a" transform="translate(2 3)"></use></svg>
+  </div>
+  <div class="forecast-tonight">
+    <h2>TONIGHT’S WEATHER FORECAST</h2>
+   
+    <div class="rain-forecast">
+      <svg class="icon-weather" data-src="/images/weathericons/12.svg" viewBox="0 0 288 288" width="62" height="62"><g stroke-width="10" fill="none" fill-rule="evenodd"><path d="M264 111.15a57.5 57.5 0 0 0-57.5-57.5h-9.75c-18.372-21.63-47.985-30.027-74.977-21.26-26.99 8.767-46.018 32.963-48.173 61.26H61.55c-20.71 0-37.5 16.79-37.5 37.5s16.79 37.5 37.5 37.5h145c31.737-.028 57.45-25.763 57.45-57.5Z" stroke="#BABABA"></path><path d="m83.4 235.75 27.4-46.95M156.1 235.75l27.4-46.95M105.95 259.45l41.2-70.65" stroke="#288ADB"></path></g></svg>
+      <div class="temp-container">
+        <div class="temp-forecast">25°<span class="after-temp">Lo</span></div>
+        <div class="real-feel">RealFeel® 27°</div>
+      </div>
+      <div class="forecast-phrase">Cloudy with a shower late</div>
+      
+      <svg class="icon-arrow-forecast" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><defs><path id="a" d="m8.495.505 5 5v.99l-5 5-.99-.99 3.805-3.806L0 6.7V5.3l11.31-.001-3.805-3.804.99-.99z"></path></defs><use fill="#000" fill-rule="nonzero" xlink:href="#a" transform="translate(2 3)"></use></svg>
+    </div>
+  </div>
+  <div class="forecast-tomorrow">
+    <h2>TOMORROW WEATHER FORECAST</h2>
+  
+    <div class="rain-forecast">
+      <svg class="icon-weather" data-src="/images/weathericons/12.svg" viewBox="0 0 288 288" width="62" height="62"><g stroke-width="10" fill="none" fill-rule="evenodd"><path d="M264 111.15a57.5 57.5 0 0 0-57.5-57.5h-9.75c-18.372-21.63-47.985-30.027-74.977-21.26-26.99 8.767-46.018 32.963-48.173 61.26H61.55c-20.71 0-37.5 16.79-37.5 37.5s16.79 37.5 37.5 37.5h145c31.737-.028 57.45-25.763 57.45-57.5Z" stroke="#BABABA"></path><path d="m83.4 235.75 27.4-46.95M156.1 235.75l27.4-46.95M105.95 259.45l41.2-70.65" stroke="#288ADB"></path></g></svg>
+      <div class="temp-container">
+        <div class="temp-forecast">25°<span class="after-temp">Lo</span></div>
+        <div class="real-feel">RealFeel® 27°</div>
+      </div>
+      <div class="forecast-phrase">Cloudy with a shower late</div>
+      
+      <svg class="icon-arrow-forecast" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><defs><path id="a" d="m8.495.505 5 5v.99l-5 5-.99-.99 3.805-3.806L0 6.7V5.3l11.31-.001-3.805-3.804.99-.99z"></path></defs><use fill="#000" fill-rule="nonzero" xlink:href="#a" transform="translate(2 3)"></use></svg>
+    </div>
+  </div>
+ </div> 
+ 

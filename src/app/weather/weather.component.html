@@ -5,135 +5,27 @@
 
 <div class="container" >
   
-<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail()">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
+<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail(weatherData.name)" *ngFor="let weatherData of weatherDataArray">
+    <div class="weatherWidgetRow" >
+        <div *ngIf="weatherData.weather[0].main == 'Haze'">
+    <fa-icon [icon]="rainIcon"  class="rain fa-4x"></fa-icon>
 </div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
+   <div *ngIf="weatherData.weather[0].main == 'Clear'">
+        <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
+    </div>
+    <div *ngIf="weatherData.weather[0].main == 'Clouds'">
+        <fa-icon [icon]="cloudIcon"  class="cloud fa-4x"></fa-icon>
+    </div>
+    <div *ngIf="weatherData.weather[0].main == 'Dust'">
+        <fa-icon [icon]="sunIcon"  class="dust fa-4x"></fa-icon>
+    </div>
+    </div>
+
+    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{convertToCelsius(weatherData.main.temp)}}°</div>
+    <div class="weatherWidgetRow" style="font-size: 12px;">{{convertToCelsius(weatherData.main.temp_min)}}°/{{convertToCelsius(weatherData.main.temp_max)}}°</div>
+    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:{{convertToCelsius(weatherData.main.feels_like)}}°</div>
+    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{weatherData.name}}</div>
+    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{weatherData.main.humidity}}%</div>
 </div>
-<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail()">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail()">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail()">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail()">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail()">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail()">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div>  
-<div class="divWeatherMain" [style.width.px]="containerWidth">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div> 
-<div class="divWeatherMain" [style.width.px]="containerWidth">
-    <div class="weatherWidgetRow">
-    <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
-</div>
-    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">24°/24°</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like:24°</div>
-    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">Mumbai</div>
-    <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: 30%</div>
-    
-</div> 
+
 </div>

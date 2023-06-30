@@ -41,6 +41,35 @@
     height: auto;
     
   }
+  .moon{
+    margin-top: 18px;
+    color: whitesmoke;
+    filter: drop-shadow(1px 1px 10px whitesmoke);
+    width: 100px;
+    height: auto;
+  }
+  .cloud{
+      margin-top: 18px;
+      color: whitesmoke;
+      filter: drop-shadow(1px 1px 10px whitesmoke);
+      width: 100px;
+      height: auto;
+    
+  }
+  .rain{
+    margin-top: 18px;
+    color: skyblue;
+    filter: drop-shadow(1px 1px 10px skyblue);
+    width: 100px;
+    height: auto;
+  }
+  .dust{
+    margin-top: 18px;
+    color: grey;
+    filter: drop-shadow(1px 1px 10px yellow);
+    width: 100px;
+    height: auto;
+  }
   .searchbox{
     width: 18%;
     height: 50px;

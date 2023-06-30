@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {faSun} from '@fortawesome/free-solid-svg-icons';
+import {faMoon} from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {faCloudRain} from '@fortawesome/free-solid-svg-icons';
+import {faCloud} from '@fortawesome/free-solid-svg-icons';
+// import {faSunDust} from '@fortawesome/free-solid-svg-icons';
 import { WeatherDataService } from '../services/weather-data.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -10,20 +14,27 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css']
 })
+
 export class WeatherComponent implements OnInit{
   containerWidth: any;
   searchWidth:any;
-  weatherData: any;
-  apiKey = environment.apiKey;
-  apiUrl = environment.apiUrl;
- 
-  constructor(private router:Router,private http:HttpClient,private weatherService:WeatherDataService){}
+  weatherData:any;
+  weatherDataResponse: any;
+  weatherDataArray: any[] = [];
+  constructor(private router:Router,private http:HttpClient,private weatherService:WeatherDataService){
+    
+  }
+  // <i class="fal fa-sun-dust"></i>
+  rainIcon =faCloudRain;
   sunIcon=faSun;
+  moonIcon = faMoon;
   searchIcon=faSearch;
+  cloudIcon=faCloud;
+  
   ngOnInit(): void {
     console.log(screen.width);
     this.updateContainerWidth();
-  this.load();
+    this.getWeatherByCity();
          
   }
  
@@ -43,22 +54,30 @@ export class WeatherComponent implements OnInit{
  
   
   }
-  weatherDetail():void{
-    this.router.navigate(['detail']);
+  weatherDetail(city:string):void{
+    this.router.navigate(['detail'],{ queryParams: { city } });
   }
-  // getWeather(city: string): void {
-  //   console.log('Before API call');
-  //   this.weatherService.getWeatherByCity(city)
-  //     .subscribe((data: any) => {
-  //       console.log('Weather data:', data);
-  //     });
-  // }
-  load(){
-    console.log("qqqqqqqqqqqqqq");
-    
-    this.http.get(`${this.apiUrl}/weather?q=${"london"}&appid=${this.apiKey}`);
-    console.log("diefjieofieof");
-    
+  getWeatherByCity(){
+    const cities =['london','nagercoil','kolkata','chathannoor','berlin','rome','paris','tokyo'];
+    for (const city of cities){
+    this.http.get(`${environment.apiUrl}/weather?q=${city}&appid=${environment.apiKey}`).subscribe(
+      (results:any) => {
+        this.weatherData = results;
+       
+        // console.log("results",results);
+        this.weatherDataArray.push(results);
+       
+        console.log("weatherDataArray",this.weatherDataArray);
+        let sunSetTime = new Date(this.weatherData.sys.sunset * 1000);
+        this.weatherData.sunset_time = sunSetTime.toLocaleTimeString();
+        let currentDate = new Date();
+        this.weatherData.isDay = true;
+      }
+    )
   }
- 
+  }
+  convertToCelsius(temp: number): number {
+    return Math.round(temp - 273.15);
+  }
+  
 }
