@@ -1,9 +1,9 @@
-.container{
+/* .container{
     width: 100%;
     height:1200px;
     background-color: bisque;
     margin-top: 25px;
-}
+} */
 .currentWeather{
     background-color: white;
     width:700px;
@@ -148,4 +148,38 @@ svg{
 .icon-arrow-forecast-today{
     margin-left: 198px;
     margin-top: 33px;
+}
+.slider-wrap{
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+}
+.slider-main{
+    position: absolute;
+    width: 200%;
+}
+.slider{
+    display: inline-block;
+    width: 800px;
+    height: 300px;
+    position: relative;
+    background: dimgray;
+    margin: 0 170px;
+}
+.button-area{
+    position: absolute;
+  
+}
+.previous{
+    top: 50%;
+    position: absolute;
+    left: 4px;
+}
+.next{
+    position: absolute;
+    top: 50%; 
+    left: 761px;
+    background-color: blue;
+   
+    
 }

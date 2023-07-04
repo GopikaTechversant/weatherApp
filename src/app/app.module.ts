@@ -8,11 +8,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NextDirective } from './directives/next.directive';
+import { PreviousDirective } from './directives/previous.directive';
 @NgModule({
   declarations: [
     AppComponent,
     WeatherComponent,
-    WeatherDetailComponent
+    WeatherDetailComponent,
+    NextDirective,
+    PreviousDirective
   ],
   imports: [
     BrowserModule,

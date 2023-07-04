@@ -1,4 +1,4 @@
-<h2>Weather Details for {{ city }}</h2>
+<!-- <h2>Weather Details for {{ city }}</h2>
 <div class="container">
   <div class="currentWeather">
     <h2>current weather</h2>
@@ -75,5 +75,62 @@
       <svg class="icon-arrow-forecast" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><defs><path id="a" d="m8.495.505 5 5v.99l-5 5-.99-.99 3.805-3.806L0 6.7V5.3l11.31-.001-3.805-3.804.99-.99z"></path></defs><use fill="#000" fill-rule="nonzero" xlink:href="#a" transform="translate(2 3)"></use></svg>
     </div>
   </div>
- </div> 
+ </div>  -->
  
+<!-- <div class="container" >
+  <div class="slider">
+  <div class="card" *ngFor="let weatherData of weatherDataArray">
+    <div class="weatherWidgetRow" >
+      <div *ngIf="weatherData.weather[0].main == 'Haze'">
+  <fa-icon [icon]="rainIcon"  class="rain fa-4x"></fa-icon>
+</div>
+ <div *ngIf="weatherData.weather[0].main == 'Clear'">
+      <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
+  </div>
+  <div *ngIf="weatherData.weather[0].main == 'Clouds'">
+      <fa-icon [icon]="cloudIcon"  class="cloud fa-4x"></fa-icon>
+  </div>
+  <div *ngIf="weatherData.weather[0].main == 'Dust'">
+      <fa-icon [icon]="sunIcon"  class="dust fa-4x"></fa-icon>
+  </div>
+    
+    <h2>{{weatherData.name}}</h2>
+  </div>
+  
+</div>
+</div> -->
+<section class="weather">
+<div class="container">
+  <div class="slider-wrap">
+  <div class="slider-main">
+<div class="slider" *ngFor="let weatherData of weatherDataArray">
+  <h3>Slider 1</h3>
+  <!-- <p>City: {{ weatherData.name }}</p> -->
+  <p>Temperature: tyt °C</p>
+  <div class="button-area">
+  <button class="previous">previous</button>
+  <button class="next" appNext >next</button>
+</div>
+</div>
+
+<div class="slider">
+  <h3>Slider 2</h3>
+  <!-- <p>City: {{ weatherData.name }}</p> -->
+  <p>Temperature: th °C</p>
+  <div class="button-area">
+    <button class="previous">previous</button>
+    <button class="next" appNext >next</button>
+  </div>
+</div>
+
+<div class="slider">
+  <h3>Slider 3</h3>
+  <!-- <p>City: {{ weatherData.name }}</p> -->
+  <p>Temperature:yhy °C</p>
+  <button class="previous">previous</button>
+    <button class="next" appNext >next</button>
+</div>
+</div>
+</div>
+</div>
+</section>
