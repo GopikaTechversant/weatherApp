@@ -9,8 +9,11 @@ export class NextDirective {
   @HostListener('click')
     nextFunc(){
       const elm = this.el.nativeElement.parentElement.parentElement.children[0];
-      const item = elm.getElementsByClassName("slider-main");
+      console.log("elm",elm);
+      
+      const item = elm.getElementsByClassName("item");
       console.log("item",item);
+      elm.append(item[0]);
       
     }
 

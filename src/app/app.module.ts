@@ -10,6 +10,7 @@ import { WeatherDetailComponent } from './weather-detail/weather-detail.componen
 import { HttpClientModule } from '@angular/common/http';
 import { NextDirective } from './directives/next.directive';
 import { PreviousDirective } from './directives/previous.directive';
+import {FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { PreviousDirective } from './directives/previous.directive';
     AppRoutingModule,
     FontAwesomeModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

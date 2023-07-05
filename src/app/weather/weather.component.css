@@ -6,6 +6,9 @@
     height: 253px;
     background: rgb(5, 5, 61);
     background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(8, 7, 42, 1));
+    /* background: linear-gradient(135deg,#00feba,#5b548a); */
+    background-color: #ffffb5;
+    /* background-image: linear-gradient(315deg, #ffffb5 0%, #247ba0 74%); */
     color: white;
     font-family: 'Segoi UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 80px;
@@ -16,12 +19,21 @@
     flex-wrap: wrap;
     /* width: 69%; */
     gap: 20px;
-    /* justify-content: space-between; */
+    /* background: linear-gradient(135deg,#00feba,#5b548a); */
+    /* background-color: #ffffb5; */
+
+    background-image: url(https://i.gifer.com/1F1I.gif);
+    background-repeat: no-repeat;
+    background-size:100%;
     justify-content: space-around;
     margin: 0 auto;
     
    
   }
+  
+    body {
+      background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif)
+    }
   
   .weatherWidgetRow {
     align-items: center;
@@ -73,7 +85,8 @@
   .searchbox{
     width: 18%;
     height: 50px;
-    background: linear-gradient(130deg,rgb(43,99,218),rgb(22,22,220));
+    background-color: #ffffb5;
+    background-image: linear-gradient(315deg, #ffffb5 0%, #247ba0 74%);
     /* background-color: blue; */
     position: fixed;
     color: white;

@@ -149,7 +149,7 @@ svg{
     margin-left: 198px;
     margin-top: 33px;
 }
-.slider-wrap{
+/* .slider-wrap{
     position: relative;
     overflow: hidden;
     height: 300px;
@@ -182,4 +182,94 @@ svg{
     background-color: blue;
    
     
+} */
+
+.product{
+    padding: 0 20px;
+    margin: 0 auto;
+    width: 600px;
+    height: 700px;
 }
+.slider-wrap{
+    position: relative;
+    overflow: hidden;
+    height: 366px;
+}
+.slider-main{
+    position: absolute;
+    width: 200%;
+}
+.item{
+    position: relative;
+    border: 5px ;
+    border-radius: 35px;
+    width: 565px;
+    height: 390px;
+    /* margin: 0 12px; */
+   /* background: linear-gradient(135deg,#00feba,#5b548a); */
+   background-image: url("https://i.gifer.com/1ZvY.gif");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.text{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 41%;
+    transform: translate(-50%,-50%);
+    text-transform: none !important;
+    color: #fff;
+}
+.prev{
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    width: 38px;
+    transform: translate(-50%,-50%);
+    border: 2px solid white;
+    border-radius: 4px
+}
+.next{
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid white;
+    border-radius: 4px
+}
+.rain{
+    margin-top: 18px;
+    color: whitesmoke;
+    filter: drop-shadow(1px 1px 10px skyblue);
+    width: 100px;
+    height: auto;
+  }
+  .sun {
+    margin-top: 18px;
+    color: yellow;
+    filter: drop-shadow(1px 1px 10px yellow);
+    width: 100px;
+    height: auto;
+    
+  }
+  .cloud{
+    margin-top: 18px;
+    color: whitesmoke;
+    filter: drop-shadow(1px 1px 10px whitesmoke);
+    width: 100px;
+    height: auto;
+  
+}
+  .icon{
+    margin-top: 177px;
+    padding-left: 16px;
+  }
+   .name{
+    font-size: 37px;
+    font-family: "popins";
+    color:whitesmoke;
+  }
+ 

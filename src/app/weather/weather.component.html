@@ -1,13 +1,13 @@
 <div class="searchbox" [style.width.px]="searchWidth">
-    <input type="search" placeholder="Enter city Name">
-    <button> <fa-icon  [icon]="searchIcon" class="search fa-1x"></fa-icon></button>
+    <input type="search" placeholder="Enter city Name" [(ngModel)]="searchedCity">
+    <button (click)="searchWeather()"> <fa-icon  [icon]="searchIcon" class="search fa-1x"></fa-icon></button>
 </div>
 
 <div class="container" >
   
 <div class="divWeatherMain" [style.width.px]="containerWidth" (click)="weatherDetail(weatherData.name)" *ngFor="let weatherData of weatherDataArray">
     <div class="weatherWidgetRow" >
-        <div *ngIf="weatherData.weather[0].main == 'Haze'">
+        <div *ngIf="weatherData.weather[0].main == 'Rain'|| weatherData.weather[0].main == 'Haze'">
     <fa-icon [icon]="rainIcon"  class="rain fa-4x"></fa-icon>
 </div>
    <div *ngIf="weatherData.weather[0].main == 'Clear'">

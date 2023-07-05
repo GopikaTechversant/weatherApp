@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter  } from '@angular/core';
 import { Router } from '@angular/router';
 import {faSun} from '@fortawesome/free-solid-svg-icons';
 import {faMoon} from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +18,7 @@ import { HttpClient } from '@angular/common/http';
 export class WeatherComponent implements OnInit{
   containerWidth: any;
   searchWidth:any;
+  searchedCity: string = '';
   weatherData:any;
   weatherDataResponse: any;
   weatherDataArray: any[] = [];
@@ -58,7 +59,7 @@ export class WeatherComponent implements OnInit{
     this.router.navigate(['detail'],{ queryParams: { city } });
   }
   getWeatherByCity(){
-    const cities =['london','nagercoil','kolkata','chathannoor','berlin','rome','paris','tokyo'];
+    const cities =['london','nagercoil','kolkata','kottayam','berlin','rome','paris','tokyo'];
     for (const city of cities){
     this.http.get(`${environment.apiUrl}/weather?q=${city}&appid=${environment.apiKey}`).subscribe(
       (results:any) => {
@@ -78,6 +79,22 @@ export class WeatherComponent implements OnInit{
   }
   convertToCelsius(temp: number): number {
     return Math.round(temp - 273.15);
+  }
+  searchWeatherByCity(city: string) {
+    this.http.get(`${environment.apiUrl}/weather?q=${city}&appid=${environment.apiKey}`).subscribe(
+      (results: any) => {
+        this.weatherData = results;
+        this.weatherDataArray.push(results);
+       
+      }
+    );
+  }
+  
+  searchWeather() {
+    if (this.searchedCity.trim() !== '') {
+      this.weatherDataArray = []; 
+      this.searchWeatherByCity(this.searchedCity.toLowerCase());
+    }
   }
   
 }
