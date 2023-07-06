@@ -189,15 +189,18 @@ svg{
     margin: 0 auto;
     width: 600px;
     height: 700px;
+    transition: transform 0.3s ease;
 }
 .slider-wrap{
     position: relative;
     overflow: hidden;
     height: 366px;
+    transition: transform 0.3s ease;
 }
 .slider-main{
     position: absolute;
     width: 200%;
+    transition: transform 0.3s ease;
 }
 .item{
     position: relative;
@@ -210,6 +213,7 @@ svg{
    background-image: url("https://i.gifer.com/1ZvY.gif");
    background-repeat: no-repeat;
    background-size: cover;
+   transition: transform 0.3s ease;
 }
 .text{
     
@@ -222,6 +226,7 @@ svg{
     transform: translate(-50%,-50%);
     text-transform: none !important;
     color: #fff;
+    transition: transform 0.3s ease;
 }
 .prev{
     position: absolute;
@@ -272,4 +277,20 @@ svg{
     font-family: "popins";
     color:whitesmoke;
   }
+ .detail-page{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+   
+ }
+ .detail{
+    width: 89%;
+    /* background-image: url("https://i.gifer.com/1ZvY.gif"); */
  
+ }
+ .cityName{
+    margin-left: 50%;
+ }
+ .middle{
+    margin-top: 74px;
+ }

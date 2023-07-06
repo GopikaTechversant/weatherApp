@@ -25,7 +25,7 @@ export class WeatherComponent implements OnInit{
   constructor(private router:Router,private http:HttpClient,private weatherService:WeatherDataService){
     
   }
-  // <i class="fal fa-sun-dust"></i>
+
   rainIcon =faCloudRain;
   sunIcon=faSun;
   moonIcon = faMoon;
@@ -55,8 +55,8 @@ export class WeatherComponent implements OnInit{
  
   
   }
-  weatherDetail(city:string):void{
-    this.router.navigate(['detail'],{ queryParams: { city } });
+  weatherDetail(lat:number,lon:number):void{
+    this.router.navigate(['detail'],{ queryParams: { lat,lon } });
   }
   getWeatherByCity(){
     const cities =['london','nagercoil','kolkata','kottayam','berlin','rome','paris','tokyo'];
@@ -81,6 +81,7 @@ export class WeatherComponent implements OnInit{
     return Math.round(temp - 273.15);
   }
   searchWeatherByCity(city: string) {
+   
     this.http.get(`${environment.apiUrl}/weather?q=${city}&appid=${environment.apiKey}`).subscribe(
       (results: any) => {
         this.weatherData = results;

@@ -1,54 +1,96 @@
+<div class="detail-page" *ngFor="let weatherData of weatherDataArray">
+  
+  <div class="detail" >
+    <h1 class="cityName">{{weatherData.list[0].weather[0].description}}</h1>
+    <div class="left-side">
+      <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
+      <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
+      <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
+      <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
+      <pre>Pressure:{{weatherData.list[0].main.pressure}}</pre>
+    </div>
+  </div>
+  <div class="middle">
+    <pre>Sun Rise:{{weatherData.city.sunrise}}</pre>
+    <pre>Sun Set:{{weatherData.city.sunset}}</pre>
+    <pre>Wind Speed:{{weatherData.list[0].wind.speed}}</pre>
+    <pre>Sea Level:{{weatherData.list[0].main.sea_level}}</pre>
+    <pre>Humidity:{{weatherData.list[0].main.sea_level}}</pre>
+  </div>
+ 
+</div>
+
+
 <section class="product">
   <div class="container">
     <div class="slider-wrap">
       <div class="slider-main">
         <div class="item" *ngFor="let weatherData of weatherDataArray">
           <div class="text">
-            <div *ngIf="weatherData.weather[0].main == 'Rain' || weatherData.weather[0].main == 'Haze'">
+            <div *ngIf="weatherData.list[0].weather[0].main == 'Rain' || weatherData.list[0].weather[0].main == 'Haze'">
               <fa-icon [icon]="rainIcon"  class="fa-thin rain fa-4x"></fa-icon>
             </div>
-            <div *ngIf="weatherData.weather[0].main == 'Clear'" >
+            <div *ngIf="weatherData.list[0].weather[0].main == 'Clear'" >
               <fa-icon [icon]="sunIcon"  class="sun fa-4x"></fa-icon>
           </div>
-          <div *ngIf="weatherData.weather[0].main == 'Clouds'">
+          <div *ngIf="weatherData.list[0].weather[0].main== 'Clouds'">
             <fa-icon [icon]="cloudIcon"  class="cloud fa-4x"></fa-icon>
         </div>
-            <pre>{{weatherData.weather[0].description}}</pre>
-            <h1 class="name">{{weatherData.name}}</h1>
-            
-                <pre>Latitude:{{convertToCelsius(weatherData.coord.lat)}}</pre>
-                <pre>Longitude:{{convertToCelsius(weatherData.coord.lon)}}</pre>
-            
+        <h1>Today</h1>
+        <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
+        <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
+        <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
+        <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
+     
           </div>
         </div>
         <div class="item">
           <div class="text">
-            <pre>Feels Like:{{convertToCelsius(weatherData.main.feels_like)}}°</pre>
-            <pre>Humidity: {{weatherData.main.humidity}}%</pre>
-            <pre>Pressure:{{weatherData.main.pressure}}</pre>
-            <pre>Temperature min: {{weatherData.main.temp_min}}</pre>
-            <pre>Temperature max: {{weatherData.main.temp_max}}</pre>
-
-            
+            <h1>Tomorrow</h1>
+            <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
+            <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
+            <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
+            <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
           </div>
         </div>
         <div class="item">
           <div class="text">
-            <pre>Sun Rise:{{  formatTime(weatherData.sys.sunrise)}}</pre>
-            <pre>Sun Set:{{  formatTime(weatherData.sys.sunset)}}</pre>
-            <pre>Wind Speed:{{weatherData.wind.speed}}</pre>
+            <h1>July 10</h1>
+            <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
+            <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
+            <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
+            <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
           </div>
         </div>
-       
-      </div>
-      <div class="button-area">
-        <button type="button" class="prev" appPrevious>
-          <fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon>
-        </button>
-        <button type="button" class="next" appNext>
-          <fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon>
-        </button>
+        <div class="item">
+          <div class="text">
+            <h1>July 11</h1>
+            <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
+            <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
+            <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
+            <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
+          </div>
+        </div>
+        <div class="item">
+          <div class="text">
+            <h1>July 12</h1>
+            <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
+            <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
+            <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
+            <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
+          </div>
+        </div>
+        
+        <div class="button-area">
+          <button type="button" class="prev" appPrevious>
+            <fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon>
+          </button>
+          <button type="button" class="next" appNext>
+            <fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+      </div>
+      
 </section>

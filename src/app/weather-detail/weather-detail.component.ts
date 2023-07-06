@@ -20,7 +20,10 @@ export class WeatherDetailComponent implements OnInit{
   weatherData:any;
   weatherDataResponse: any;
   weatherDataArray: any[] = [];
+  weatherDetailsArray:any[]=[];
   city: string='';
+  lat:number=0;
+  lon:number=0;
   showForecastTonight = false;
   showForecastTomorrow = false;
   forecasts = ['Today', 'Tonight', 'Tomorrow'];
@@ -37,13 +40,13 @@ export class WeatherDetailComponent implements OnInit{
   ngOnInit(): void {
     
     this.route.queryParams.subscribe(params => {
-      this.city = params['city'];
+      this.city = params['lat'];
     });
     this.getWeatherByCity();
   }
   
   getWeatherByCity(){
-      this.http.get(`${environment.apiUrl}/weather?q=${this.city}&7&appid=${environment.apiKey}`).subscribe(
+      this.http.get(`${environment.apiUrl}/forecast?lat=${this.lat}&lon=${this.lon}&cnt=5&appid=${environment.apiKey}`).subscribe(
       (results:any) => {
         this.weatherData = results;
        
@@ -51,18 +54,13 @@ export class WeatherDetailComponent implements OnInit{
         this.weatherDataArray.push(results);
         
         console.log("weatherDataArray",this.weatherDataArray);
-        let sunSetTime = new Date(this.weatherData.sys.sunset * 1000);
-        this.weatherData.sunset_time = sunSetTime.toLocaleTimeString();
-        let currentDate = new Date();
-        this.weatherData.isDay = true;
+       
       }
     )
   }
-  convertToCelsius(temp: number): number {
-    return Math.round(temp - 273.15);
-  }
+
   convertToDate(date:string){
-    let sunTime = new Date(this.weatherData.sys.sunset * 1000);
+    let sunTime = new Date(this.weatherData.city.sunset * 1000);
     this.weatherData.sunset_time = sunTime.toLocaleTimeString();
   }
 
