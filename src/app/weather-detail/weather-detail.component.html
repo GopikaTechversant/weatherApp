@@ -21,7 +21,35 @@
 </div>
 
 
-<section class="product">
+
+<!-- <div class="weather-container">
+  <div class="weather-next-days" *ngFor="let dayOf of weatherFiveDays">
+    <h3>description:{{dayOf.weather[0].description}}</h3>
+    <h3>main:{{dayOf.weather[0].main}}</h3>
+    <h3>Temperature:{{dayOf.main.temp}}</h3>
+    <button class="previous">prev</button>
+    <button class="nextarrow">next</button>
+  </div>
+ 
+</div> -->
+<div class="weather-container">
+  <div class="weather-next-days" [ngClass]="{'blue-bg': currentIndex== 0, 'green-bg': currentIndex==1,'two-bg':currentIndex==2,'three-bg':currentIndex==3}">
+    <div *ngIf="weatherFiveDays[currentIndex].weather[0].main == 'Clouds'">
+      <fa-icon [icon]="cloudIcon"  class="cloud fa-4x"></fa-icon>
+    </div>
+    <div *ngIf="weatherFiveDays[currentIndex].weather[0].main == 'Rain' || weatherFiveDays[currentIndex].weather[0].main == 'Haze'">
+      <fa-icon [icon]="rainIcon"  class="fa-thin rain fa-4x"></fa-icon>
+    </div>
+    <h3>description: {{weatherFiveDays[currentIndex].weather[0].description}}</h3>
+    <h3>main: {{weatherFiveDays[currentIndex].weather[0].main}}</h3>
+    <h3>Temperature: {{weatherFiveDays[currentIndex].main.temp}}</h3>
+    <button class="prev" (click)=" displayPrevious()"> <fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon></button>
+    <button class="next" (click)="displayNext()"> <fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon></button>
+  </div>
+</div>
+
+
+<!-- <section class="product">
   <div class="container">
     <div class="slider-wrap">
       <div class="slider-main">
@@ -36,15 +64,18 @@
           <div *ngIf="weatherData.list[0].weather[0].main== 'Clouds'">
             <fa-icon [icon]="cloudIcon"  class="cloud fa-4x"></fa-icon>
         </div>
+        <div class="item" style="background-color: lightblue;">
+        <div class="text">
         <h1>Today</h1>
         <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
         <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
         <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
         <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
-     
-          </div>
+      </div>
+      </div>
         </div>
-        <div class="item">
+        </div>
+        <div class="item" style="background-color: lightslategray">
           <div class="text">
             <h1>Tomorrow</h1>
             <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
@@ -53,7 +84,7 @@
             <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
           </div>
         </div>
-        <div class="item">
+        <div class="item" style="background-color: lightgreen;">
           <div class="text">
             <h1>July 10</h1>
             <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
@@ -62,7 +93,7 @@
             <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
           </div>
         </div>
-        <div class="item">
+        <div class="item" style="background-color: lightskyblue;">
           <div class="text">
             <h1>July 11</h1>
             <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
@@ -71,7 +102,7 @@
             <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
           </div>
         </div>
-        <div class="item">
+        <div class="item" style="background-color: blue;">
           <div class="text">
             <h1>July 12</h1>
             <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
@@ -80,17 +111,16 @@
             <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
           </div>
         </div>
-        
-        <div class="button-area">
-          <button type="button" class="prev" appPrevious>
-            <fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon>
-          </button>
-          <button type="button" class="next" appNext>
-            <fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon>
-          </button>
-        </div>
+      </div>
+      <div class="button-area">
+        <button type="button" class="prev" appPrevious>
+          <fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon>
+        </button>
+        <button type="button" class="next" appNext>
+          <fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon>
+        </button>
       </div>
     </div>
       </div>
       
-</section>
+</section> -->

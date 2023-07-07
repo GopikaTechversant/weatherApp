@@ -35,6 +35,7 @@ export class WeatherDetailComponent implements OnInit{
   cloudIcon=faCloud;
   arrowRight=faArrowRight;
   arrowLeft=faArrowLeft;
+  weatherFiveDays:any[]=[];
   constructor(private http:HttpClient,private route:ActivatedRoute){}
  
   ngOnInit(): void {
@@ -52,11 +53,27 @@ export class WeatherDetailComponent implements OnInit{
        
         console.log("results",results);
         this.weatherDataArray.push(results);
+        this.weatherFiveDays=results.list;
+        console.log("weatherFiveDays",this.weatherFiveDays);
+        console.log("len",this.weatherFiveDays.length);
         
-        console.log("weatherDataArray",this.weatherDataArray);
+        // console.log("weatherDataArray",this.weatherDataArray);
        
       }
     )
+  }
+
+  currentIndex: number = 0;
+
+  displayNext() {
+    if (this.currentIndex < this.weatherFiveDays.length - 1) {
+      this.currentIndex++; 
+    }
+  }
+  displayPrevious() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--; 
+    }
   }
 
   convertToDate(date:string){

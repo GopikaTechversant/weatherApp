@@ -210,9 +210,9 @@ svg{
     height: 390px;
     /* margin: 0 12px; */
    /* background: linear-gradient(135deg,#00feba,#5b548a); */
-   background-image: url("https://i.gifer.com/1ZvY.gif");
+   /* background-image: url("https://i.gifer.com/1ZvY.gif");
    background-repeat: no-repeat;
-   background-size: cover;
+   background-size: cover; */
    transition: transform 0.3s ease;
 }
 .text{
@@ -230,8 +230,8 @@ svg{
 }
 .prev{
     position: absolute;
-    left: 18px;
-    top: 50%;
+    left: 348px;
+    top: 54%;
     width: 38px;
     transform: translate(-50%,-50%);
     border: 2px solid white;
@@ -239,8 +239,8 @@ svg{
 }
 .next{
     position: absolute;
-    right: 7px;
-    top: 50%;
+    right: 309px;
+    top: 54%;
     transform: translate(-50%,-50%);
     border: 2px solid white;
     border-radius: 4px
@@ -294,3 +294,32 @@ svg{
  .middle{
     margin-top: 74px;
  }
+
+ .weather-container{
+    background-color: cadetblue;
+    width: 50%;
+    margin: 0 auto;
+}
+ .weather-next-days{
+    background-color: burlywood;
+    padding-left:  120px; 
+ }
+ .blue-bg {
+    background-color: lightskyblue;
+  }
+  
+  .green-bg {
+    background-color: lightgreen;
+  }
+  .two-bg{
+    background-color: lightpink;
+  }
+  .three-bg{
+    background-color: lightblue;
+  }
+  .previous{
+    margin-left: -120px;
+  }
+  .nextarrow{
+    margin-right: 30px;
+  }
