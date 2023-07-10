@@ -231,7 +231,7 @@ svg{
 .prev{
     position: absolute;
     left: 348px;
-    top: 54%;
+    top: 65%;
     width: 38px;
     transform: translate(-50%,-50%);
     border: 2px solid white;
@@ -240,7 +240,7 @@ svg{
 .next{
     position: absolute;
     right: 309px;
-    top: 54%;
+    top: 65%;
     transform: translate(-50%,-50%);
     border: 2px solid white;
     border-radius: 4px
@@ -290,32 +290,59 @@ svg{
  }
  .cityName{
     margin-left: 50%;
+   color: blueviolet;
  }
  .middle{
     margin-top: 74px;
+   
  }
 
  .weather-container{
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
     width: 50%;
     margin: 0 auto;
+    
 }
  .weather-next-days{
-    background-color: burlywood;
+    /* background-color: burlywood; */
     padding-left:  120px; 
+    height: 361px;
  }
  .blue-bg {
-    background-color: lightskyblue;
+    background-image: url("https://i.gifer.com/1ZvY.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
   
   .green-bg {
-    background-color: lightgreen;
+    background-image: url("https://i.gifer.com/Ozx.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
   .two-bg{
-    background-color: lightpink;
+    background-image: url("https://i.gifer.com/1F1V.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
   .three-bg{
-    background-color: lightblue;
+    background-image: url("https://i.gifer.com/SnWR.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
+  }
+  .four-bg{ background-image: url("https://i.gifer.com/1ezL.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
+  }
+  .five-bg{
+    background-image: url("https://i.gifer.com/1k2j.gifs");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
   .previous{
     margin-left: -120px;
@@ -323,3 +350,23 @@ svg{
   .nextarrow{
     margin-right: 30px;
   }
+  .animate-slide {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .slide-enter {
+    transform: translateX(100%);
+  }
+  
+  .slide-enter-active {
+    transform: translateX(0%);
+  }
+  
+  .slide-leave {
+    transform: translateX(-100%);
+  }
+  
+  .slide-leave-active {
+    transform: translateX(0%);
+  }
+  

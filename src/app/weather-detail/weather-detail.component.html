@@ -3,11 +3,13 @@
   <div class="detail" >
     <h1 class="cityName">{{weatherData.list[0].weather[0].description}}</h1>
     <div class="left-side">
+      
       <pre>Feels Like:{{weatherData.list[0].main.feels_like}}</pre>
       <pre>Temperature:{{weatherData.list[0].main.temp}}</pre>
       <pre>Temperature Maximum:{{weatherData.list[0].main.temp_min}}</pre>
       <pre>Temperature Minimum:{{weatherData.list[0].main.temp_max}}</pre>
       <pre>Pressure:{{weatherData.list[0].main.pressure}}</pre>
+      <pre></pre>
     </div>
   </div>
   <div class="middle">
@@ -22,20 +24,14 @@
 
 
 
-<!-- <div class="weather-container">
-  <div class="weather-next-days" *ngFor="let dayOf of weatherFiveDays">
-    <h3>description:{{dayOf.weather[0].description}}</h3>
-    <h3>main:{{dayOf.weather[0].main}}</h3>
-    <h3>Temperature:{{dayOf.main.temp}}</h3>
-    <button class="previous">prev</button>
-    <button class="nextarrow">next</button>
-  </div>
- 
-</div> -->
+
 <div class="weather-container">
-  <div class="weather-next-days" [ngClass]="{'blue-bg': currentIndex== 0, 'green-bg': currentIndex==1,'two-bg':currentIndex==2,'three-bg':currentIndex==3}">
+  <div class="weather-next-days" [ngClass]="{'blue-bg': currentIndex== 0, 'green-bg': currentIndex==1,'two-bg':currentIndex==2,'three-bg':currentIndex==3,'four-bg':currentIndex==4,'five-bg':currentIndex==5}" [@slideInOut]="currentIndex">
     <div *ngIf="weatherFiveDays[currentIndex].weather[0].main == 'Clouds'">
       <fa-icon [icon]="cloudIcon"  class="cloud fa-4x"></fa-icon>
+    </div>
+    <div *ngIf="weatherFiveDays[currentIndex].weather[0].main == 'Rain'">
+      <fa-icon [icon]="rainIcon"  class="rain fa-4x"></fa-icon>
     </div>
     <div *ngIf="weatherFiveDays[currentIndex].weather[0].main == 'Rain' || weatherFiveDays[currentIndex].weather[0].main == 'Haze'">
       <fa-icon [icon]="rainIcon"  class="fa-thin rain fa-4x"></fa-icon>
@@ -43,6 +39,9 @@
     <h3>description: {{weatherFiveDays[currentIndex].weather[0].description}}</h3>
     <h3>main: {{weatherFiveDays[currentIndex].weather[0].main}}</h3>
     <h3>Temperature: {{weatherFiveDays[currentIndex].main.temp}}</h3>
+    <h3>Feels Like: {{weatherFiveDays[currentIndex].main.feels_like}}</h3>
+    <h3>Temperature Minimum: {{weatherFiveDays[currentIndex].main.temp_min}}</h3>
+    <h3>Temperature Maximum: {{weatherFiveDays[currentIndex].main.temp_max}}</h3>
     <button class="prev" (click)=" displayPrevious()"> <fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon></button>
     <button class="next" (click)="displayNext()"> <fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon></button>
   </div>

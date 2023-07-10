@@ -10,13 +10,28 @@ import {faCloud} from '@fortawesome/free-solid-svg-icons';
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {faCloudShowersHeavy} from '@fortawesome/free-solid-svg-icons';
-// <i class="fa-thin fa-cloud-showers-heavy" style="color: #195fd7;"></i>
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import {  ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-weather-detail',
   templateUrl: './weather-detail.component.html',
-  styleUrls: ['./weather-detail.component.css']
+  styleUrls: ['./weather-detail.component.css'],
+  animations: [
+    trigger('slideInOut', [
+      //state('void', style({ position: 'fixed', width: '50%' })),
+      //('*', style({ position: 'fixed', width: '50%' })),
+      transition(':enter', [
+        style({ transform: 'translateX(100%)' }),
+        animate('0.3s ease-in-out', style({ transform: 'translateX(0%)' }))
+      ]),
+      transition(':leave', [
+        animate('0.3s ease-in-out', style({ transform: 'translateX(-100%)' }))
+      ])
+    ])
+  ]
 })
 export class WeatherDetailComponent implements OnInit{
+  
   weatherData:any;
   weatherDataResponse: any;
   weatherDataArray: any[] = [];
@@ -36,7 +51,7 @@ export class WeatherDetailComponent implements OnInit{
   arrowRight=faArrowRight;
   arrowLeft=faArrowLeft;
   weatherFiveDays:any[]=[];
-  constructor(private http:HttpClient,private route:ActivatedRoute){}
+  constructor(private http:HttpClient,private route:ActivatedRoute,private cdr: ChangeDetectorRef){}
  
   ngOnInit(): void {
     
@@ -68,11 +83,13 @@ export class WeatherDetailComponent implements OnInit{
   displayNext() {
     if (this.currentIndex < this.weatherFiveDays.length - 1) {
       this.currentIndex++; 
+      this.cdr.detectChanges();
     }
   }
   displayPrevious() {
     if (this.currentIndex > 0) {
       this.currentIndex--; 
+      this.cdr.detectChanges(); 
     }
   }
 
