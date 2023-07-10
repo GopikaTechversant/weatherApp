@@ -10,13 +10,85 @@ import {faCloud} from '@fortawesome/free-solid-svg-icons';
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {faCloudShowersHeavy} from '@fortawesome/free-solid-svg-icons';
-// <i class="fa-thin fa-cloud-showers-heavy" style="color: #195fd7;"></i>
+
+import {
+  trigger,
+  transition,
+  query,
+  style,
+  animate,
+  group,
+} from '@angular/animations';
+
+const left = [
+  query(':enter, :leave', style({ position: 'fixed', width: '200px' }), {
+    optional: true,
+  }),
+  group([
+    query(
+      ':enter',
+      [
+        style({ transform: 'translateX(-200px)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(0%)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+    query(
+      ':leave',
+      [
+        style({ transform: 'translateX(0%)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(200px)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+  ]),
+];
+
+const right = [
+  query(':enter, :leave', style({ position: 'fixed', width: '200px' }), {
+    optional: true,
+  }),
+  group([
+    query(
+      ':enter',
+      [
+        style({ transform: 'translateX(200px)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(0%)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+    query(
+      ':leave',
+      [
+        style({ transform: 'translateX(0%)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(-200px)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+  ]),
+];
 @Component({
   selector: 'app-weather-detail',
   templateUrl: './weather-detail.component.html',
-  styleUrls: ['./weather-detail.component.css']
+  styleUrls: ['./weather-detail.component.css'],
+  animations: [
+    trigger('animImageSlider', [
+      transition(':increment', right),
+      transition(':decrement', left),
+    ]),
+  ],
 })
 export class WeatherDetailComponent implements OnInit{
+  containerWidth: any;
+  searchWidth:any;
   weatherData:any;
   weatherDataResponse: any;
   weatherDataArray: any[] = [];
@@ -36,6 +108,13 @@ export class WeatherDetailComponent implements OnInit{
   arrowRight=faArrowRight;
   arrowLeft=faArrowLeft;
   weatherFiveDays:any[]=[];
+  images=[
+    "https://i.gifer.com/1ZvY.gif",
+    "https://i.gifer.com/Ozx.gif",
+    "https://i.gifer.com/1F1V.gif",
+    "https://i.gifer.com/SnWR.gif",
+    "https://i.gifer.com/1k2j.gifs"
+  ]
   constructor(private http:HttpClient,private route:ActivatedRoute){}
  
   ngOnInit(): void {
@@ -44,6 +123,7 @@ export class WeatherDetailComponent implements OnInit{
       this.city = params['lat'];
     });
     this.getWeatherByCity();
+    this.updateContainerWidth();
   }
   
   getWeatherByCity(){
@@ -64,18 +144,48 @@ export class WeatherDetailComponent implements OnInit{
   }
 
   currentIndex: number = 0;
-
+  counter:number=0;
   displayNext() {
     if (this.currentIndex < this.weatherFiveDays.length - 1) {
       this.currentIndex++; 
+      
     }
   }
   displayPrevious() {
     if (this.currentIndex > 0) {
       this.currentIndex--; 
+      
     }
   }
+  // onNext() {
+  //   if (this.counter != this.images.length - 1) {
+  //     this.counter++;
+  //   }
+  // }
+  onNext() {
+    if (this.counter + 1 <= this.images.length - 3) {
+      this.counter += 1;
+    }
+  }
+  
+  
+  onPrevious() {
+    if (this.counter > 0) {
+      this.counter--;
+    }
+  }
+  private updateContainerWidth(): void {
+    const screenWidth = screen.width;
+  
+    console.log(this.containerWidth);
 
+  if(screenWidth >= 1200){
+    const cardWidth = Math.floor(screenWidth / 3);
+    this.containerWidth = cardWidth - 10; 
+  }
+ 
+  
+  }
   convertToDate(date:string){
     let sunTime = new Date(this.weatherData.city.sunset * 1000);
     this.weatherData.sunset_time = sunTime.toLocaleTimeString();
@@ -96,5 +206,6 @@ formatTime(timestamp: number): string {
 padZero(num: number): string {
   return num < 10 ? `0${num}` : num.toString();
 }
+
 
 }

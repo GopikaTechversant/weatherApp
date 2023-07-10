@@ -1,9 +1,3 @@
-/* .container{
-    width: 100%;
-    height:1200px;
-    background-color: bisque;
-    margin-top: 25px;
-} */
 .currentWeather{
     background-color: white;
     width:700px;
@@ -149,40 +143,7 @@ svg{
     margin-left: 198px;
     margin-top: 33px;
 }
-/* .slider-wrap{
-    position: relative;
-    overflow: hidden;
-    height: 300px;
-}
-.slider-main{
-    position: absolute;
-    width: 200%;
-}
-.slider{
-    display: inline-block;
-    width: 800px;
-    height: 300px;
-    position: relative;
-    background: dimgray;
-    margin: 0 170px;
-}
-.button-area{
-    position: absolute;
-  
-}
-.previous{
-    top: 50%;
-    position: absolute;
-    left: 4px;
-}
-.next{
-    position: absolute;
-    top: 50%; 
-    left: 761px;
-    background-color: blue;
-   
-    
-} */
+
 
 .product{
     padding: 0 20px;
@@ -208,11 +169,7 @@ svg{
     border-radius: 35px;
     width: 565px;
     height: 390px;
-    /* margin: 0 12px; */
-   /* background: linear-gradient(135deg,#00feba,#5b548a); */
-   /* background-image: url("https://i.gifer.com/1ZvY.gif");
-   background-repeat: no-repeat;
-   background-size: cover; */
+   
    transition: transform 0.3s ease;
 }
 .text{
@@ -230,8 +187,8 @@ svg{
 }
 .prev{
     position: absolute;
-    left: 348px;
-    top: 54%;
+    left: 112px;
+    top: 65%;
     width: 38px;
     transform: translate(-50%,-50%);
     border: 2px solid white;
@@ -239,8 +196,8 @@ svg{
 }
 .next{
     position: absolute;
-    right: 309px;
-    top: 54%;
+    right: 119px;
+    top: 65%;
     transform: translate(-50%,-50%);
     border: 2px solid white;
     border-radius: 4px
@@ -290,36 +247,97 @@ svg{
  }
  .cityName{
     margin-left: 50%;
+   color: blueviolet;
  }
  .middle{
     margin-top: 74px;
+   
  }
 
  .weather-container{
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
     width: 50%;
     margin: 0 auto;
+    
 }
- .weather-next-days{
-    background-color: burlywood;
-    padding-left:  120px; 
+ .detail-container{
+    /* background-color: burlywood; */
+    padding-left:  173px; 
+    height: 361px;
+    width: 815px;
  }
  .blue-bg {
-    background-color: lightskyblue;
+    background-image: url("https://i.gifer.com/1ZvY.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
   
   .green-bg {
-    background-color: lightgreen;
+    background-image: url("https://i.gifer.com/Ozx.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
   .two-bg{
-    background-color: lightpink;
+    background-image: url("https://i.gifer.com/1F1V.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
   .three-bg{
-    background-color: lightblue;
+    background-image: url("https://i.gifer.com/SnWR.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
-  .previous{
-    margin-left: -120px;
+  .four-bg{ background-image: url("https://i.gifer.com/1ezL.gif");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
   }
-  .nextarrow{
-    margin-right: 30px;
+  .five-bg{
+    background-image: url("https://i.gifer.com/1k2j.gifs");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    color: white;
+  }
+  h3{
+    padding-left: 43px;
+    padding-top: 10px;
+  }
+  .image-overlay{
+    width: 317px;
+    height: 338px
+  }
+  .detail-container.slide-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+
+  .slide-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    /* overflow-x: auto; */
+    margin-left: -298px;
+  }
+  
+  /* .slide {
+    flex: 0 0 33.33%; 
+    width: 600px;
+  }
+   */
+   .row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    /* overflow-x: auto; */
+  }
+  
+  .slide {
+    flex: 0 0 auto;
+    /* Add your slide styles here */
   }

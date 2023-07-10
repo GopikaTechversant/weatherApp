@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NextDirective } from './directives/next.directive';
 import { PreviousDirective } from './directives/previous.directive';
 import {FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import {FormsModule } from '@angular/forms';
     FontAwesomeModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
