@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit ,HostListener} from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,6 +18,7 @@ import {
   style,
   animate,
   group,
+  state
 } from '@angular/animations';
 
 const left = [
@@ -80,14 +81,29 @@ const right = [
   templateUrl: './weather-detail.component.html',
   styleUrls: ['./weather-detail.component.css'],
   animations: [
-    trigger('animImageSlider', [
-      transition(':increment', right),
-      transition(':decrement', left),
-    ]),
-  ],
+    trigger('slideAnimation', [
+      transition(':increment', [
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
+      ]),
+      transition(':decrement', [
+        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
+      ])
+    ])
+  ]
+  // animations: [
+  //   trigger('animImageSlider', [
+  //     transition(':increment', right),
+  //     transition(':decrement', left),
+  //   ]),
+  // ],
 })
+
 export class WeatherDetailComponent implements OnInit{
   containerWidth: any;
+  containerWidt: any;
+  // screenWidth: number=0;
   searchWidth:any;
   weatherData:any;
   weatherDataResponse: any;
@@ -125,7 +141,7 @@ export class WeatherDetailComponent implements OnInit{
     this.getWeatherByCity();
     this.updateContainerWidth();
   }
-  
+ 
   getWeatherByCity(){
       this.http.get(`${environment.apiUrl}/forecast?lat=${this.lat}&lon=${this.lon}&cnt=5&appid=${environment.apiKey}`).subscribe(
       (results:any) => {
@@ -157,8 +173,8 @@ export class WeatherDetailComponent implements OnInit{
       
     }
   }
-  // onNext() {
-  //   if (this.counter != this.images.length - 1) {
+  // onNextt() {
+  //   if (this.counter != this.images.length - 2) {
   //     this.counter++;
   //   }
   // }
@@ -167,6 +183,7 @@ export class WeatherDetailComponent implements OnInit{
       this.counter += 1;
     }
   }
+
   
   
   onPrevious() {
@@ -174,18 +191,27 @@ export class WeatherDetailComponent implements OnInit{
       this.counter--;
     }
   }
+
+  // showThirdSlide(): boolean {
+  //   return window.innerWidth >= 900;
+  //   // const screenWidth = screen.width;
+    
+  // }
+  
   private updateContainerWidth(): void {
     const screenWidth = screen.width;
+    console.log("screenWidth", screenWidth);
   
-    console.log(this.containerWidth);
-
-  if(screenWidth >= 1200){
-    const cardWidth = Math.floor(screenWidth / 3);
-    this.containerWidth = cardWidth - 10; 
+    if (screenWidth > 900) {
+      const cardWidth = Math.floor(screenWidth / 3); 
+      console.log("cardWidth", cardWidth);
+      this.containerWidth = cardWidth;
+    }
+   
   }
- 
   
-  }
+  
+  
   convertToDate(date:string){
     let sunTime = new Date(this.weatherData.city.sunset * 1000);
     this.weatherData.sunset_time = sunTime.toLocaleTimeString();

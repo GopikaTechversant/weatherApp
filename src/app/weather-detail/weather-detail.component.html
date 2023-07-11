@@ -24,8 +24,8 @@
 
 
 
-<button type="button" (click)="onPrevious()" [disabled]="counter===0" class="prev"><fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon></button>
-<button type="button" (click)="onNext()" [disabled]="this.counter == this.images.length - 1" class="next"><fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon></button>
+<!-- <button type="button" (click)="onPrevious()" [disabled]="counter===0" class="prev"><fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon></button>
+<button type="button" (click)="onNext()" [disabled]="this.counter == this.images.length - 1" class="next"><fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon></button> -->
 <!-- <div [@animImageSlider]="counter" class="detail-container">
   <ng-container *ngFor="let img of images; let i=index" class="ngContai ner">
     <div class="slide" *ngIf="i===counter">
@@ -43,10 +43,11 @@
    
   </ng-container>
 </div> -->
-
+<button type="button" (click)="onPrevious()" [disabled]="counter===0" class="prev"><fa-icon [icon]="arrowLeft"  class=" fa-2x"></fa-icon></button>
+<button type="button" (click)="onNext()" [disabled]="this.counter == this.images.length - 1" class="next"><fa-icon [icon]="arrowRight"  class=" fa-2x"></fa-icon></button>
 <div class="detail-container">
   <div class="row">
-  <div class="slide" *ngIf="images[counter]">
+  <div class="slide" *ngIf="images[counter]" [@slideAnimation]="counter">
     <div class="image-overlay" [ngClass]="{
       'blue-bg': counter === 0,
       'green-bg': counter === 1,
@@ -63,7 +64,7 @@
       <h3>Temperature Maximum: {{ weatherFiveDays[counter].main.temp_max }}</h3>
     </div>
   </div>
-  <div class="slide" *ngIf="images[counter+1]">
+  <div class="slide" *ngIf="images[counter+1]" [@slideAnimation]="counter+1">
     <div class="image-overlay" [ngClass]="{
       'blue-bg': counter + 1 === 0,
       'green-bg': counter + 1 === 1,
@@ -80,7 +81,7 @@
       <h3>Temperature Maximum: {{ weatherFiveDays[counter+1].main.temp_max }}</h3>
     </div>
   </div>
-  <div class="slide" *ngIf="images[counter+2]">
+  <div class="slide" *ngIf="images[counter+2]  && containerWidth <= 900" [@slideAnimation]="counter+2" >
     <div class="image-overlay" [ngClass]="{
       'blue-bg': counter + 2 === 0,
       'green-bg': counter + 2 === 1,
@@ -102,25 +103,4 @@
 
 
 
-<!-- <div class="detail-container">
-  <div class="slide-row">
-    <ng-container *ngFor="let img of images; let i=index" class="ngContainer">
-      <div class="slide" *ngIf="i >= counter && i < counter + 3" >
-        <div class="image-overlay" [ngClass]="{
-          'blue-bg': i === counter,
-          'green-bg': i === counter + 1,
-          'two-bg': i === counter + 2
-        }">
-        
-          <h3>description: {{weatherFiveDays[i].weather[0].description}}</h3>
-          <h3>main: {{weatherFiveDays[i].weather[0].main}}</h3>
-          <h3>Temperature: {{weatherFiveDays[i].main.temp}}</h3>
-          <h3>Feels Like: {{weatherFiveDays[i].main.feels_like}}</h3>
-          <h3>Temperature Minimum: {{weatherFiveDays[i].main.temp_min}}</h3>
-          <h3>Temperature Maximum: {{weatherFiveDays[i].main.temp_max}}</h3>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</div> -->
 

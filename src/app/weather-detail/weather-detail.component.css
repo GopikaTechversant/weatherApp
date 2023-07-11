@@ -187,7 +187,7 @@ svg{
 }
 .prev{
     position: absolute;
-    left: 112px;
+    left: 181px;
     top: 65%;
     width: 38px;
     transform: translate(-50%,-50%);
@@ -196,7 +196,7 @@ svg{
 }
 .next{
     position: absolute;
-    right: 119px;
+    right: 136px;
     top: 65%;
     transform: translate(-50%,-50%);
     border: 2px solid white;
@@ -264,7 +264,7 @@ svg{
     /* background-color: burlywood; */
     padding-left:  173px; 
     height: 361px;
-    width: 815px;
+    width: 956px;
  }
  .blue-bg {
     background-image: url("https://i.gifer.com/1ZvY.gif");
@@ -307,7 +307,7 @@ svg{
     padding-top: 10px;
   }
   .image-overlay{
-    width: 317px;
+    width: 309px;
     height: 338px
   }
   .detail-container.slide-container {
@@ -321,23 +321,89 @@ svg{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    /* overflow-x: auto; */
+    
     margin-left: -298px;
   }
   
-  /* .slide {
-    flex: 0 0 33.33%; 
-    width: 600px;
-  }
-   */
-   .row {
+ 
+  .row {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    /* overflow-x: auto; */
   }
   
   .slide {
     flex: 0 0 auto;
-    /* Add your slide styles here */
+    transition: transform 0.5s ease-in-out;
   }
+ 
+  @media (max-width: 800px) {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .slide {
+      flex-basis: 50%;
+      max-width: 50%;
+      overflow-y: hidden;
+    }
+
+.detail-container {
+  padding-left: 33px;
+  height: 361px;
+  width: 956px;
+}
+.next {
+  position: absolute;
+  right: -68px;
+  top: 89%;
+  transform: translate(-50%,-50%);
+  border: 2px solid white;
+  border-radius: 4px;
+}
+.prev {
+  position: absolute;
+  left: 50px;
+  top: 89%;
+  width: 38px;
+  transform: translate(-50%,-50%);
+  border: 2px solid white;
+  border-radius: 4px;
+}
+  }
+  /* @media (max-width: 600px) {
+    .next {
+      position: absolute;
+      right: 154px;
+      top: 108%;
+      transform: translate(-50%,-50%);
+      border: 2px solid white;
+      border-radius: 4px;
+    }
+    .detail-page {
+      width: 10%;
+      display: flex;
+      flex-direction: row;
+      margin-left: 104px;
+  }
+  .detail-container{
+    padding-left: 178px;
+    height: 361px;
+    width: 656px;
+}
+.cityName {
+  margin-left: -7%;
+  color: blueviolet;
+  font-size: 23px;
+}
+.middle {
+  margin-top: 258px;
+  margin-left: -69px;
+}
+.slide {
+  flex-basis: 50%;
+  max-width: 50%;
+  overflow-y: hidden;
+  margin-left: -94px;
+}
+  } */
