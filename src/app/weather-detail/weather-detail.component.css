@@ -1,9 +1,3 @@
-/* .container{
-    width: 100%;
-    height:1200px;
-    background-color: bisque;
-    margin-top: 25px;
-} */
 .currentWeather{
     background-color: white;
     width:700px;
@@ -149,40 +143,7 @@ svg{
     margin-left: 198px;
     margin-top: 33px;
 }
-/* .slider-wrap{
-    position: relative;
-    overflow: hidden;
-    height: 300px;
-}
-.slider-main{
-    position: absolute;
-    width: 200%;
-}
-.slider{
-    display: inline-block;
-    width: 800px;
-    height: 300px;
-    position: relative;
-    background: dimgray;
-    margin: 0 170px;
-}
-.button-area{
-    position: absolute;
-  
-}
-.previous{
-    top: 50%;
-    position: absolute;
-    left: 4px;
-}
-.next{
-    position: absolute;
-    top: 50%; 
-    left: 761px;
-    background-color: blue;
-   
-    
-} */
+
 
 .product{
     padding: 0 20px;
@@ -208,11 +169,7 @@ svg{
     border-radius: 35px;
     width: 565px;
     height: 390px;
-    /* margin: 0 12px; */
-   /* background: linear-gradient(135deg,#00feba,#5b548a); */
-   /* background-image: url("https://i.gifer.com/1ZvY.gif");
-   background-repeat: no-repeat;
-   background-size: cover; */
+   
    transition: transform 0.3s ease;
 }
 .text{
@@ -230,7 +187,7 @@ svg{
 }
 .prev{
     position: absolute;
-    left: 348px;
+    left: 181px;
     top: 65%;
     width: 38px;
     transform: translate(-50%,-50%);
@@ -239,7 +196,7 @@ svg{
 }
 .next{
     position: absolute;
-    right: 309px;
+    right: 136px;
     top: 65%;
     transform: translate(-50%,-50%);
     border: 2px solid white;
@@ -303,10 +260,11 @@ svg{
     margin: 0 auto;
     
 }
- .weather-next-days{
+ .detail-container{
     /* background-color: burlywood; */
-    padding-left:  120px; 
+    padding-left:  173px; 
     height: 361px;
+    width: 956px;
  }
  .blue-bg {
     background-image: url("https://i.gifer.com/1ZvY.gif");
@@ -344,29 +302,122 @@ svg{
     background-size: cover; 
     color: white;
   }
-  .previous{
-    margin-left: -120px;
+  h3{
+    padding-left: 43px;
+    padding-top: 10px;
   }
-  .nextarrow{
-    margin-right: 30px;
+  .image-overlay{
+    width: 309px;
+    height: 338px
   }
-  .animate-slide {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .slide-enter {
-    transform: translateX(100%);
-  }
-  
-  .slide-enter-active {
-    transform: translateX(0%);
+  .detail-container.slide-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   
-  .slide-leave {
-    transform: translateX(-100%);
+
+  .slide-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    
+    margin-left: -298px;
   }
   
-  .slide-leave-active {
-    transform: translateX(0%);
+ 
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
+  
+  .slide {
+    flex: 0 0 auto;
+    transition: transform 0.5s ease-in-out;
+  }
+ 
+  @media (max-width: 800px) {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .slide {
+      flex-basis: 50%;
+      max-width: 50%;
+      overflow-y: hidden;
+    }
+
+.detail-container {
+  padding-left: 33px;
+  height: 361px;
+  width: 956px;
+}
+.next {
+  position: absolute;
+  right: -256px;
+    top: 75%;
+  transform: translate(-50%,-50%);
+  border: 2px solid white;
+  border-radius: 4px;
+}
+.prev {
+  position: absolute;
+  left: 50px;
+  top: 89%;
+  width: 38px;
+  transform: translate(-50%,-50%);
+  border: 2px solid white;
+  border-radius: 4px;
+}
+  }
+  @media (max-width: 900px){
+    .next{
+        right: -254px;
+    top: 77%;
+    }
+  }
+  @media(max-width:400){
+    .next{
+        right: 9px;
+        top: 86%;
+    }
+   
+  }
+  /* @media (max-width: 600px) {
+    .next {
+      position: absolute;
+      right: 154px;
+      top: 108%;
+      transform: translate(-50%,-50%);
+      border: 2px solid white;
+      border-radius: 4px;
+    }
+    .detail-page {
+      width: 10%;
+      display: flex;
+      flex-direction: row;
+      margin-left: 104px;
+  }
+  .detail-container{
+    padding-left: 178px;
+    height: 361px;
+    width: 656px;
+}
+.cityName {
+  margin-left: -7%;
+  color: blueviolet;
+  font-size: 23px;
+}
+.middle {
+  margin-top: 258px;
+  margin-left: -69px;
+}
+.slide {
+  flex-basis: 50%;
+  max-width: 50%;
+  overflow-y: hidden;
+  margin-left: -94px;
+}
+  } */
   

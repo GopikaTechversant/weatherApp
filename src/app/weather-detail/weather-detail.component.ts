@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit ,HostListener} from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,28 +10,96 @@ import {faCloud} from '@fortawesome/free-solid-svg-icons';
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {faCloudShowersHeavy} from '@fortawesome/free-solid-svg-icons';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import {  ChangeDetectorRef } from '@angular/core';
+
+import {
+  trigger,
+  transition,
+  query,
+  style,
+  animate,
+  group,
+  state
+} from '@angular/animations';
+
+const left = [
+  query(':enter, :leave', style({ position: 'fixed', width: '200px' }), {
+    optional: true,
+  }),
+  group([
+    query(
+      ':enter',
+      [
+        style({ transform: 'translateX(-200px)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(0%)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+    query(
+      ':leave',
+      [
+        style({ transform: 'translateX(0%)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(200px)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+  ]),
+];
+
+const right = [
+  query(':enter, :leave', style({ position: 'fixed', width: '200px' }), {
+    optional: true,
+  }),
+  group([
+    query(
+      ':enter',
+      [
+        style({ transform: 'translateX(200px)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(0%)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+    query(
+      ':leave',
+      [
+        style({ transform: 'translateX(0%)' }),
+        animate('.3s ease-out', style({ transform: 'translateX(-200px)' })),
+      ],
+      {
+        optional: true,
+      }
+    ),
+  ]),
+];
 @Component({
   selector: 'app-weather-detail',
   templateUrl: './weather-detail.component.html',
   styleUrls: ['./weather-detail.component.css'],
   animations: [
-    trigger('slideInOut', [
-      //state('void', style({ position: 'fixed', width: '50%' })),
-      //('*', style({ position: 'fixed', width: '50%' })),
-      transition(':enter', [
-        style({ transform: 'translateX(100%)' }),
-        animate('0.3s ease-in-out', style({ transform: 'translateX(0%)' }))
+    trigger('slideAnimation', [
+      transition(':increment', [
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
       ]),
-      transition(':leave', [
-        animate('0.3s ease-in-out', style({ transform: 'translateX(-100%)' }))
+      transition(':decrement', [
+        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        animate('500ms ease-in-out', style({ transform: 'translateX(0)', opacity: 1 }))
       ])
     ])
   ]
+ 
 })
+
 export class WeatherDetailComponent implements OnInit{
-  
+  containerWidth: any;
+  containerWidt: any;
+  // screenWidth: number=0;
+  searchWidth:any;
   weatherData:any;
   weatherDataResponse: any;
   weatherDataArray: any[] = [];
@@ -51,7 +119,14 @@ export class WeatherDetailComponent implements OnInit{
   arrowRight=faArrowRight;
   arrowLeft=faArrowLeft;
   weatherFiveDays:any[]=[];
-  constructor(private http:HttpClient,private route:ActivatedRoute,private cdr: ChangeDetectorRef){}
+  images=[
+    "https://i.gifer.com/1ZvY.gif",
+    "https://i.gifer.com/Ozx.gif",
+    "https://i.gifer.com/1F1V.gif",
+    "https://i.gifer.com/SnWR.gif",
+    "https://i.gifer.com/1k2j.gifs"
+  ]
+  constructor(private http:HttpClient,private route:ActivatedRoute){}
  
   ngOnInit(): void {
     
@@ -59,8 +134,9 @@ export class WeatherDetailComponent implements OnInit{
       this.city = params['lat'];
     });
     this.getWeatherByCity();
+    this.updateContainerWidth();
   }
-  
+ 
   getWeatherByCity(){
       this.http.get(`${environment.apiUrl}/forecast?lat=${this.lat}&lon=${this.lon}&cnt=5&appid=${environment.apiKey}`).subscribe(
       (results:any) => {
@@ -79,20 +155,32 @@ export class WeatherDetailComponent implements OnInit{
   }
 
   currentIndex: number = 0;
+  counter:number=0;
 
-  displayNext() {
-    if (this.currentIndex < this.weatherFiveDays.length - 1) {
-      this.currentIndex++; 
-      this.cdr.detectChanges();
+ 
+onNext() {
+    if (this.counter + 1 <= this.images.length - 3) {
+      this.counter += 1;
     }
   }
-  displayPrevious() {
-    if (this.currentIndex > 0) {
-      this.currentIndex--; 
-      this.cdr.detectChanges(); 
+onPrevious() {
+    if (this.counter > 0) {
+      this.counter--;
     }
   }
-
+private updateContainerWidth(): void {
+    const screenWidth = screen.width;
+    console.log("screenWidth", screenWidth);
+  
+    if (screenWidth >= 900) {
+      this.containerWidth = 3; // Show first 3 slides
+    } else if (screenWidth > 500) {
+      this.containerWidth = 2; // Show first 2 slides
+    } else {
+      this.containerWidth = 1; // Show only the first slide
+    }
+  }
+  
   convertToDate(date:string){
     let sunTime = new Date(this.weatherData.city.sunset * 1000);
     this.weatherData.sunset_time = sunTime.toLocaleTimeString();
@@ -113,5 +201,6 @@ formatTime(timestamp: number): string {
 padZero(num: number): string {
   return num < 10 ? `0${num}` : num.toString();
 }
+
 
 }
