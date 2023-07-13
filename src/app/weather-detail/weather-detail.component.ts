@@ -138,18 +138,14 @@ export class WeatherDetailComponent implements OnInit{
   }
  
   getWeatherByCity(){
-      this.http.get(`${environment.apiUrl}/forecast?lat=${this.lat}&lon=${this.lon}&cnt=5&appid=${environment.apiKey}`).subscribe(
+    this.http.get(`/forecast?lat=${this.lat}&lon=${this.lon}&cnt=5`).subscribe(
       (results:any) => {
         this.weatherData = results;
-       
         console.log("results",results);
         this.weatherDataArray.push(results);
         this.weatherFiveDays=results.list;
         console.log("weatherFiveDays",this.weatherFiveDays);
         console.log("len",this.weatherFiveDays.length);
-        
-        // console.log("weatherDataArray",this.weatherDataArray);
-       
       }
     )
   }
@@ -173,11 +169,11 @@ private updateContainerWidth(): void {
     console.log("screenWidth", screenWidth);
   
     if (screenWidth >= 900) {
-      this.containerWidth = 3; // Show first 3 slides
+      this.containerWidth = 3; 
     } else if (screenWidth > 500) {
-      this.containerWidth = 2; // Show first 2 slides
+      this.containerWidth = 2; 
     } else {
-      this.containerWidth = 1; // Show only the first slide
+      this.containerWidth = 1; 
     }
   }
   

@@ -349,17 +349,29 @@ svg{
     }
 
 .detail-container {
-  padding-left: 33px;
+  padding-left: 2px;
   height: 361px;
-  width: 956px;
+  width: 490px;
+}
+.image-overlay{
+  width: 229px;
+    height: 233px;
+
+}
+.detail-page {
+  width: 53%;
+  display: flex;
+  flex-direction: row;
+}
+h3 {
+  padding-left: 43px;
+  padding-top: 10px;
+  font-size: 12px;
 }
 .next {
-  position: absolute;
-  right: -256px;
-    top: 75%;
-  transform: translate(-50%,-50%);
-  border: 2px solid white;
-  border-radius: 4px;
+  right: 55px;
+  top: 137%;
+
 }
 .prev {
   position: absolute;
@@ -370,12 +382,38 @@ svg{
   border: 2px solid white;
   border-radius: 4px;
 }
+
   }
   @media (max-width: 900px){
-    .next{
-        right: -254px;
-    top: 77%;
-    }
+    .next {
+      right: 65px;
+      top: 137%;
+  }
+  .prev{
+    left: 26px;
+    top: 136%;
+  }
+  .middle{
+    margin-top: 74px;
+    margin-left: 231px;
+}
+    .detail-container {
+      padding-left: 3px;
+      height: 361px;
+      width: 848px;
+  }
+  .image-overlay {
+    width: 267px;
+    height: 338px;
+}
+h3 {
+  padding-left: 43px;
+  padding-top: 22px;
+  font-size: 15px;
+}
+.detail {
+  width: 79%;
+}
   }
   @media(max-width:400){
     .next{

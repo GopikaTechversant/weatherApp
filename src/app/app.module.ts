@@ -12,7 +12,8 @@ import { NextDirective } from './directives/next.directive';
 import { PreviousDirective } from './directives/previous.directive';
 import {FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import { WeatherInterceptorInterceptor } from './weather-interceptor.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +29,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: WeatherInterceptorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
